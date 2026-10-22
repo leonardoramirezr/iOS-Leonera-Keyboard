@@ -15,6 +15,10 @@ final class KeyboardState: ObservableObject {
     /// cuanto se tocan, sin esperar a saber si es un toque o un deslizamiento.
     var playKeyFeedback: () -> Void = {}
 
+    /// Vibración de cada carácter que desplaza el cursor en el modo trackpad. Solo vibra,
+    /// sin sonido, porque el cursor puede avanzar muchos caracteres seguidos.
+    var playCursorStepFeedback: () -> Void = {}
+
     /// Indica si el sistema pide que el teclado muestre su propia tecla de cambio de teclado.
     var needsInputModeSwitchKey = false {
         didSet { rebuildRows() }
