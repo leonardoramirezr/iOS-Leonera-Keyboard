@@ -7,6 +7,9 @@ final class KeyboardState: ObservableObject {
     @Published var shift: ShiftState = .off
     @Published var showingEmoji = false
     @Published var showingDictation = false
+    /// Al mantener pulsada la barra espaciadora el teclado funciona como un trackpad:
+    /// las teclas se muestran vacías y arrastrar el dedo mueve el cursor.
+    @Published var isTrackpadActive = false
 
     /// Vibración y sonido de tecla; lo asigna el controlador. Las teclas lo llaman en
     /// cuanto se tocan, sin esperar a saber si es un toque o un deslizamiento.
