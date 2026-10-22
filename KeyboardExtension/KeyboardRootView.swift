@@ -164,9 +164,10 @@ struct KeyCell: View {
         trackpadTimer = nil
     }
 
-    /// Mueve el cursor un carácter por cada tramo que recorre el dedo. El recorrido se
-    /// acelera según la velocidad: despacio el cursor avanza con precisión y deprisa
-    /// recorre muchos caracteres. El tamaño del tramo depende de la sensibilidad.
+    /// Mueve el cursor un carácter por cada tramo que recorre el dedo y vibra por cada
+    /// carácter desplazado. El recorrido se acelera según la velocidad: despacio el cursor
+    /// avanza con precisión y deprisa recorre muchos caracteres. El tamaño del tramo
+    /// depende de la sensibilidad.
     private func moveCursor() {
         let delta = dragX - trackpadLastX
         let elapsed = max(dragTime.timeIntervalSince(trackpadLastTime), 0.001)
@@ -183,6 +184,7 @@ struct KeyCell: View {
         trackpadAccumulated -= CGFloat(steps) * step
         let action = KeyAction(steps < 0 ? .cursorLeft : .cursorRight)
         for _ in 0..<abs(steps) {
+            state.playCursorStepFeedback()
             perform(action)
         }
     }

@@ -37,6 +37,9 @@ final class KeyboardViewController: UIInputViewController {
         state.playKeyFeedback = { [weak self] in
             self?.playFeedback()
         }
+        state.playCursorStepFeedback = { [weak self] in
+            self?.playCursorStepFeedback()
+        }
 
         let root = KeyboardRootView(state: state, dictation: dictation) { [weak self] action in
             self?.perform(action)
@@ -303,5 +306,12 @@ final class KeyboardViewController: UIInputViewController {
         if settings.keyClicks {
             AudioServicesPlaySystemSound(1104)
         }
+    }
+
+    /// Solo vibración, sin sonido, para cada carácter que mueve el cursor.
+    private func playCursorStepFeedback() {
+        let settings = state.settings
+        guard settings.haptics, hasFullAccess else { return }
+        haptics.play(settings)
     }
 }
