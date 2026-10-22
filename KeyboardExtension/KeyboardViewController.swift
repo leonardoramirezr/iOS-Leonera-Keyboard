@@ -24,6 +24,12 @@ final class KeyboardViewController: UIInputViewController {
             name: .NSExtensionHostDidBecomeActive,
             object: nil
         )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(hostDidEnterBackground),
+            name: .NSExtensionHostDidEnterBackground,
+            object: nil
+        )
         configurationObserver = DarwinNotificationObserver(name: ConfigurationStorage.didChangeNotification) { [weak self] in
             self?.reloadConfiguration()
         }
@@ -81,6 +87,10 @@ final class KeyboardViewController: UIInputViewController {
     @objc private func hostDidBecomeActive() {
         reloadConfiguration()
         dictation.refresh()
+    }
+
+    @objc private func hostDidEnterBackground() {
+        dictation.hostDidEnterBackground()
     }
 
     @objc private func reloadConfiguration() {

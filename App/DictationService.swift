@@ -5,7 +5,8 @@ import SwiftUI
 ///
 /// Al abrirse con `leonerakeyboard://dictation` activa el micrófono y lo mantiene
 /// abierto en segundo plano (modo de fondo «audio») para poder grabar cada vez que
-/// el teclado lo pida. Si pasan `idleTimeout` segundos sin grabar, lo libera.
+/// el teclado lo pida. Si pasan `idleTimeout` segundos sin grabar, lo libera; sin el
+/// cierre automático activado, también cuando el teclado lo pide.
 final class DictationService: ObservableObject {
     static let idleTimeout: TimeInterval = 5 * 60
 
@@ -30,6 +31,7 @@ final class DictationService: ObservableObject {
             DarwinNotificationObserver(name: DictationBridge.stopNotification) { [weak self] in self?.finishCapture() },
             DarwinNotificationObserver(name: DictationBridge.cancelNotification) { [weak self] in self?.cancelCapture() },
             DarwinNotificationObserver(name: DictationBridge.pingNotification) { [weak self] in self?.publish() },
+            DarwinNotificationObserver(name: DictationBridge.endSessionNotification) { [weak self] in self?.keyboardDidRelease() },
         ]
         let names: [Notification.Name] = [AVAudioSession.interruptionNotification, .AVAudioEngineConfigurationChange]
         audioObservers = names.map { name in
@@ -198,6 +200,14 @@ final class DictationService: ObservableObject {
         idleTimer = Timer.scheduledTimer(withTimeInterval: Self.idleTimeout, repeats: false) { [weak self] _ in
             self?.endSession()
         }
+    }
+
+    /// El teclado pide cerrar el micrófono. Se ignora con la app visible: el aviso puede
+    /// llegar justo cuando el teclado la abre para grabar, o venir del teclado usado
+    /// dentro de la propia app.
+    private func keyboardDidRelease() {
+        guard isSessionActive, !recordsOnReturn, UIApplication.shared.applicationState != .active else { return }
+        endSession()
     }
 
     /// Una llamada, Siri u otro cambio de audio detiene el micrófono.

@@ -51,6 +51,8 @@ final class DictationController: ObservableObject {
     private var appSessionActive = false
     /// Se abrió la app para grabar: al volver al teclado se muestra la pantalla de grabación.
     private var awaitingAppRecording = false
+    /// El teclado acaba de abrir la app: al ocultarse no hay que cerrar el micrófono.
+    private var openingApp = false
     /// Última grabación de la app ya procesada (o descartada).
     private var handledCaptureID: UUID?
     private var timeout: DispatchWorkItem?
@@ -81,6 +83,7 @@ final class DictationController: ObservableObject {
     /// Al mostrar el panel o volver al teclado: recarga los ajustes y pregunta a la app
     /// si sigue escuchando (o grabando).
     func refresh() {
+        openingApp = false
         let saved = DictationSettingsStorage.load().improveText
         if saved != improveText { improveText = saved }
         if awaitingAppRecording, phase == .idle { showAppPending(startsAt: nil) }
@@ -90,6 +93,27 @@ final class DictationController: ObservableObject {
     /// El teclado se oculta: el teclado no puede seguir grabando por su cuenta.
     func keyboardWillDisappear() {
         if mode == .local, isRecording { cancel() }
+        releaseMicrophoneIfNeeded()
+    }
+
+    /// La app anfitriona pasa a segundo plano (se cambió de app).
+    func hostDidEnterBackground() {
+        releaseMicrophoneIfNeeded()
+    }
+
+    /// Se cierra la pantalla de dictado.
+    func closePanel() {
+        cancel()
+        releaseMicrophoneIfNeeded()
+    }
+
+    /// Sin el cierre automático activado, descarta el dictado en curso y pide a la app
+    /// que libere el micrófono. No lo hace mientras se abre la app para grabar.
+    private func releaseMicrophoneIfNeeded() {
+        guard !openingApp, !DictationSettingsStorage.load().autoCloseMicrophone else { return }
+        if mode != nil || phase != .idle { cancel() }
+        appSessionActive = false
+        DarwinNotification.post(DictationBridge.endSessionNotification)
     }
 
     // MARK: - Acciones
@@ -198,10 +222,12 @@ final class DictationController: ObservableObject {
 
     private func openApp() {
         phase = .idle
+        openingApp = true
         if openURL(DictationBridge.recordURL) {
             awaitingAppRecording = true
             message = "Se abrió Leonera Keyboard para activar el micrófono. Vuelve a esta app: la grabación empezará al volver."
         } else {
+            openingApp = false
             mode = nil
             message = "No se pudo abrir Leonera Keyboard. Ábrela y toca «Activar micrófono» en Dictado."
         }

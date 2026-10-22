@@ -99,7 +99,7 @@ struct DictationPanel: View {
     private func handle(_ action: KeyAction) {
         if action.type == .none {
             // «ABC»: vuelve al teclado.
-            dictation.cancel()
+            dictation.closePanel()
             state.showingDictation = false
         } else {
             perform(action)

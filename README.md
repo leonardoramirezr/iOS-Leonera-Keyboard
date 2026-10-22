@@ -69,9 +69,11 @@ la configuración, para no compartir la API key.
 iOS normalmente no deja que un teclado use el micrófono, así que la app graba por
 él: la primera vez que dictas, el teclado abre Leonera Keyboard, que activa el
 micrófono y empieza a grabar; vuelve a la app anterior (botón «◀︎» de la barra de
-estado) y termina la grabación desde el teclado. El micrófono queda activo en
-segundo plano (con el indicador naranja) para los siguientes dictados y se
-desactiva tras 5 minutos sin usarlo o desde la app. Si el sistema sí permite
+estado) y termina la grabación desde el teclado. Por defecto, el micrófono se
+cierra al salir de la pantalla de dictado, cambiar de app o cerrar el teclado. Si
+activas **Cierre automático del micrófono** en Dictado, queda activo en segundo
+plano (con el indicador naranja) para los siguientes dictados y se desactiva tras
+5 minutos sin usarlo o desde la app. Si el sistema sí permite
 grabar desde el teclado, se graba directamente sin abrir la app.
 
 Dictar requiere **Permitir acceso completo** y permiso de micrófono. Si ya tenías
