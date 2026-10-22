@@ -63,10 +63,20 @@ struct SettingsView: View {
                     Text("Distancia para deslizar: \(Int(store.configuration.settings.swipeThreshold)) pt")
                     Slider(value: settings.swipeThreshold, in: 8...40, step: 1)
                 }
+                VStack(alignment: .leading) {
+                    Text("Sensibilidad del cursor: \(String(format: "%.1f", store.configuration.settings.cursorSensitivity))")
+                    Slider(value: settings.cursorSensitivity, in: 1.0...10.0, step: 0.1) {
+                        Text("Sensibilidad del cursor")
+                    } minimumValueLabel: {
+                        Image(systemName: "tortoise")
+                    } maximumValueLabel: {
+                        Image(systemName: "hare")
+                    }
+                }
             } header: {
                 Text("Tamaño y gestos")
             } footer: {
-                Text("La distancia para deslizar es cuánto hay que arrastrar una tecla hacia abajo para usar su símbolo secundario.")
+                Text("La distancia para deslizar es cuánto hay que arrastrar una tecla hacia abajo para usar su símbolo secundario. Mantén pulsada la barra espaciadora y arrastra a izquierda o derecha para mover el cursor; con más sensibilidad se mueve más con menos recorrido. Si mueves el dedo despacio el cursor avanza carácter a carácter; si lo mueves deprisa, recorre mucho más texto.")
             }
         }
         .navigationTitle("Ajustes del teclado")

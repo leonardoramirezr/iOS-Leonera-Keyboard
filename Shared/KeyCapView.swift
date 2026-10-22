@@ -23,6 +23,11 @@ enum KeyboardPalette {
     }
 
     static let active = Color(red: 0.2, green: 0.48, blue: 0.98)
+
+    /// Tecla vacía y sin sombra del modo trackpad (barra espaciadora mantenida).
+    static func trackpadKey(_ scheme: ColorScheme) -> Color {
+        scheme == .dark ? Color(white: 0.24) : Color(red: 0.9, green: 0.9, blue: 0.91)
+    }
 }
 
 /// Dibuja una tecla: acción principal grande y acción secundaria pequeña arriba.
@@ -33,6 +38,8 @@ struct KeyCapView: View {
     var isPressed = false
     var isSwiping = false
     var isSelected = false
+    /// Modo trackpad: la tecla se dibuja vacía, sin etiquetas ni sombra.
+    var isBlank = false
     var rowHeight: CGFloat = 48
 
     @Environment(\.colorScheme) private var colorScheme
@@ -43,9 +50,9 @@ struct KeyCapView: View {
 
     var body: some View {
         RoundedRectangle(cornerRadius: 5, style: .continuous)
-            .fill(background)
-            .shadow(color: KeyboardPalette.shadow(colorScheme), radius: 0, x: 0, y: 1)
-            .overlay(content.padding(.horizontal, 2))
+            .fill(isBlank ? KeyboardPalette.trackpadKey(colorScheme) : background)
+            .shadow(color: isBlank ? .clear : KeyboardPalette.shadow(colorScheme), radius: 0, x: 0, y: 1)
+            .overlay(content.padding(.horizontal, 2).opacity(isBlank ? 0 : 1))
             .overlay(
                 RoundedRectangle(cornerRadius: 5, style: .continuous)
                     .stroke(KeyboardPalette.active, lineWidth: isSelected ? 3 : 0)

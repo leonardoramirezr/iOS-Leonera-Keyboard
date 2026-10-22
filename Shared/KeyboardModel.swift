@@ -239,12 +239,20 @@ struct KeyboardSettings: Codable, Hashable {
     var rowHeight: Double = 48
     /// Distancia en puntos que hay que deslizar hacia abajo para activar la acción secundaria.
     var swipeThreshold: Double = 18
+    /// Sensibilidad del cursor al mantener pulsada la barra espaciadora, de 1 a 10.
+    var cursorSensitivity: Double = 5
 
     init() {}
 
+    /// Puntos que hay que arrastrar el dedo para mover el cursor un carácter.
+    var cursorPointsPerCharacter: Double {
+        let sensitivity = min(max(cursorSensitivity, 1), 10)
+        return 30 - 2.7 * sensitivity
+    }
+
     private enum CodingKeys: String, CodingKey {
         case autoCapitalize, showLowercase, haptics, hapticStyle, hapticIntensity, hapticDuration
-        case keyClicks, rowHeight, swipeThreshold
+        case keyClicks, rowHeight, swipeThreshold, cursorSensitivity
     }
 
     init(from decoder: Decoder) throws {
@@ -259,6 +267,7 @@ struct KeyboardSettings: Codable, Hashable {
         keyClicks = try container.decodeIfPresent(Bool.self, forKey: .keyClicks) ?? defaults.keyClicks
         rowHeight = try container.decodeIfPresent(Double.self, forKey: .rowHeight) ?? defaults.rowHeight
         swipeThreshold = try container.decodeIfPresent(Double.self, forKey: .swipeThreshold) ?? defaults.swipeThreshold
+        cursorSensitivity = try container.decodeIfPresent(Double.self, forKey: .cursorSensitivity) ?? defaults.cursorSensitivity
     }
 }
 
