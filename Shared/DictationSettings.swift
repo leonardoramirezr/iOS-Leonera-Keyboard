@@ -35,11 +35,15 @@ struct DictationSettings: Codable, Equatable {
     /// Segundos que espera la app, tras volver al teclado, antes de empezar a grabar
     /// cuando el teclado la abrió para activar el micrófono.
     var recordingStartDelay = DictationSettings.defaultRecordingStartDelay
+    /// Mantiene el micrófono de la app activo en segundo plano entre dictados y lo
+    /// cierra solo tras `DictationService.idleTimeout`. Desactivado, se cierra al salir
+    /// de la pantalla de dictado, cambiar de app o cerrar el teclado.
+    var autoCloseMicrophone = false
 
     init() {}
 
     private enum CodingKeys: String, CodingKey {
-        case apiKey, customBaseURL, transcriptionModel, languageModel, language, prompt, improveText, recordingStartDelay
+        case apiKey, customBaseURL, transcriptionModel, languageModel, language, prompt, improveText, recordingStartDelay, autoCloseMicrophone
     }
 
     init(from decoder: Decoder) throws {
@@ -53,6 +57,7 @@ struct DictationSettings: Codable, Equatable {
         prompt = try container.decodeIfPresent(String.self, forKey: .prompt) ?? defaults.prompt
         improveText = try container.decodeIfPresent(Bool.self, forKey: .improveText) ?? defaults.improveText
         recordingStartDelay = try container.decodeIfPresent(TimeInterval.self, forKey: .recordingStartDelay) ?? defaults.recordingStartDelay
+        autoCloseMicrophone = try container.decodeIfPresent(Bool.self, forKey: .autoCloseMicrophone) ?? defaults.autoCloseMicrophone
     }
 
     /// URL base que se usa en las peticiones, sin la barra final.

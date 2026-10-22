@@ -12,6 +12,8 @@ enum DictationBridge {
     static let startNotification = "com.leonera.keyboard.dictation.start"
     static let stopNotification = "com.leonera.keyboard.dictation.stop"
     static let cancelNotification = "com.leonera.keyboard.dictation.cancel"
+    /// El teclado pide liberar el micrófono (con el cierre automático desactivado).
+    static let endSessionNotification = "com.leonera.keyboard.dictation.endSession"
     /// El teclado pregunta si la app sigue escuchando; la app responde con su estado.
     static let pingNotification = "com.leonera.keyboard.dictation.ping"
     static let statusNotification = "com.leonera.keyboard.dictation.status"
