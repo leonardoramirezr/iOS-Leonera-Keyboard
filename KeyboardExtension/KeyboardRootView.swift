@@ -48,7 +48,9 @@ struct KeyCell: View {
     /// Posición y momento del último evento procesado por el trackpad.
     @State private var trackpadLastX: CGFloat = 0
     @State private var trackpadLastTime = Date()
-    /// Recorrido acumulado (ya acelerado) que aún no llega a un carácter completo.
+    /// Velocidad actual del cursor en caracteres por segundo; negativa hacia la izquierda.
+    @State private var trackpadVelocity: CGFloat = 0
+    /// Caracteres fraccionarios que aún no llegan a uno completo.
     @State private var trackpadAccumulated: CGFloat = 0
 
     /// Tiempo que hay que mantener pulsada la barra espaciadora para activar el trackpad.
@@ -151,6 +153,7 @@ struct KeyCell: View {
             isTrackpad = true
             trackpadLastX = dragX
             trackpadLastTime = Date()
+            trackpadVelocity = 0
             trackpadAccumulated = 0
             state.isTrackpadActive = true
             state.playKeyFeedback()
@@ -164,24 +167,32 @@ struct KeyCell: View {
         trackpadTimer = nil
     }
 
-    /// Mueve el cursor un carácter por cada tramo que recorre el dedo y vibra por cada
-    /// carácter desplazado. El recorrido se acelera según la velocidad: despacio el cursor
-    /// avanza con precisión y deprisa recorre muchos caracteres. El tamaño del tramo
-    /// depende de la sensibilidad.
+    /// Mueve el cursor según la velocidad del dedo y vibra por cada carácter desplazado.
+    /// La velocidad objetivo sigue una curva, de lineal a progresiva, que llega a la
+    /// velocidad máxima. El cursor sube de velocidad como mucho a la aceleración máxima;
+    /// frenar o cambiar de sentido es inmediato, así que se detiene al parar el dedo.
     private func moveCursor() {
+        let settings = state.settings
         let delta = dragX - trackpadLastX
-        let elapsed = max(dragTime.timeIntervalSince(trackpadLastTime), 0.001)
+        let elapsed = CGFloat(max(dragTime.timeIntervalSince(trackpadLastTime), 0.001))
         trackpadLastX = dragX
         trackpadLastTime = dragTime
-        guard delta != 0 else { return }
 
-        let speed = abs(delta) / CGFloat(elapsed)
-        trackpadAccumulated += delta * Self.cursorAcceleration(forSpeed: speed)
+        let fingerSpeed = abs(delta) / elapsed
+        let fraction = min(fingerSpeed / CGFloat(settings.cursorFullSpeed), 1)
+        let exponent = CGFloat(min(max(settings.cursorCurveExponent, 1), 2.5))
+        let direction: CGFloat = delta < 0 ? -1 : 1
+        let target = direction * CGFloat(settings.cursorMaxSpeed) * pow(fraction, exponent)
+        trackpadVelocity = Self.approach(
+            trackpadVelocity,
+            target: target,
+            maxIncrease: CGFloat(settings.cursorMaxAcceleration) * elapsed
+        )
+        trackpadAccumulated += trackpadVelocity * elapsed
 
-        let step = CGFloat(state.settings.cursorPointsPerCharacter)
-        let steps = Int(trackpadAccumulated / step)
+        let steps = Int(trackpadAccumulated)
         guard steps != 0 else { return }
-        trackpadAccumulated -= CGFloat(steps) * step
+        trackpadAccumulated -= CGFloat(steps)
         let action = KeyAction(steps < 0 ? .cursorLeft : .cursorRight)
         for _ in 0..<abs(steps) {
             state.playCursorStepFeedback()
@@ -189,10 +200,13 @@ struct KeyCell: View {
         }
     }
 
-    /// Factor de aceleración según la velocidad del dedo en puntos por segundo:
-    /// 0,5 por debajo de 100 pt/s, 1 hacia 200 pt/s y hasta 5 a partir de 1000 pt/s.
-    private static func cursorAcceleration(forSpeed speed: CGFloat) -> CGFloat {
-        min(max(speed / 200, 0.5), 5)
+    /// Velocidad siguiente hacia el objetivo. Subir de velocidad aumenta como mucho
+    /// `maxIncrease` por intervalo; frenar o cambiar de sentido es inmediato.
+    private static func approach(_ velocity: CGFloat, target: CGFloat, maxIncrease: CGFloat) -> CGFloat {
+        let speedingUp = target * velocity >= 0 && abs(target) > abs(velocity)
+        guard speedingUp else { return target }
+        let increase = min(abs(target) - abs(velocity), maxIncrease)
+        return velocity + (target < 0 ? -increase : increase)
     }
 
     private func endTrackpad() {

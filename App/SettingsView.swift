@@ -73,10 +73,28 @@ struct SettingsView: View {
                         Image(systemName: "hare")
                     }
                 }
+                VStack(alignment: .leading) {
+                    Text("Velocidad máxima del cursor: \(Int(store.configuration.settings.cursorMaxSpeed)) car/s")
+                    Slider(value: settings.cursorMaxSpeed, in: 5...200, step: 1)
+                }
+                VStack(alignment: .leading) {
+                    Text("Aceleración máxima del cursor: \(Int(store.configuration.settings.cursorMaxAcceleration)) car/s²")
+                    Slider(value: settings.cursorMaxAcceleration, in: 10...400, step: 5)
+                }
+                VStack(alignment: .leading) {
+                    Text("Curva del cursor: \(String(format: "%.1f", store.configuration.settings.cursorCurveExponent))")
+                    Slider(value: settings.cursorCurveExponent, in: 1.0...2.5, step: 0.1) {
+                        Text("Curva del cursor")
+                    } minimumValueLabel: {
+                        Text("Lineal").font(.caption)
+                    } maximumValueLabel: {
+                        Text("Progresiva").font(.caption)
+                    }
+                }
             } header: {
                 Text("Tamaño y gestos")
             } footer: {
-                Text("La distancia para deslizar es cuánto hay que arrastrar una tecla hacia abajo para usar su símbolo secundario. Mantén pulsada la barra espaciadora y arrastra a izquierda o derecha para mover el cursor; con más sensibilidad se mueve más con menos recorrido. Si mueves el dedo despacio el cursor avanza carácter a carácter; si lo mueves deprisa, recorre mucho más texto.")
+                Text("La distancia para deslizar es cuánto hay que arrastrar una tecla hacia abajo para usar su símbolo secundario. Mantén pulsada la barra espaciadora y arrastra a izquierda o derecha para mover el cursor. La sensibilidad indica lo deprisa que hay que mover el dedo para llegar a la velocidad máxima; la aceleración máxima indica lo rápido que el cursor sube hasta esa velocidad. La curva va de lineal a progresiva: cuanto más progresiva, más precisión a poca velocidad y más recorrido a mucha.")
             }
         }
         .navigationTitle("Ajustes del teclado")

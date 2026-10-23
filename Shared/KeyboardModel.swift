@@ -241,18 +241,24 @@ struct KeyboardSettings: Codable, Hashable {
     var swipeThreshold: Double = 18
     /// Sensibilidad del cursor al mantener pulsada la barra espaciadora, de 1 a 10.
     var cursorSensitivity: Double = 5
+    /// Velocidad máxima del cursor en caracteres por segundo.
+    var cursorMaxSpeed: Double = 60
+    /// Aceleración máxima del cursor en caracteres por segundo al cuadrado.
+    var cursorMaxAcceleration: Double = 120
+    /// Forma de la curva de velocidad: 1 es lineal y 2,5 es muy progresiva.
+    var cursorCurveExponent: Double = 2
 
     init() {}
 
-    /// Puntos que hay que arrastrar el dedo para mover el cursor un carácter.
-    var cursorPointsPerCharacter: Double {
-        let sensitivity = min(max(cursorSensitivity, 1), 10)
-        return 30 - 2.7 * sensitivity
+    /// Velocidad del dedo, en puntos por segundo, a la que el cursor alcanza su velocidad máxima.
+    var cursorFullSpeed: Double {
+        1200 / min(max(cursorSensitivity, 1), 10)
     }
 
     private enum CodingKeys: String, CodingKey {
         case autoCapitalize, showLowercase, haptics, hapticStyle, hapticIntensity, hapticDuration
         case keyClicks, rowHeight, swipeThreshold, cursorSensitivity
+        case cursorMaxSpeed, cursorMaxAcceleration, cursorCurveExponent
     }
 
     init(from decoder: Decoder) throws {
@@ -268,6 +274,9 @@ struct KeyboardSettings: Codable, Hashable {
         rowHeight = try container.decodeIfPresent(Double.self, forKey: .rowHeight) ?? defaults.rowHeight
         swipeThreshold = try container.decodeIfPresent(Double.self, forKey: .swipeThreshold) ?? defaults.swipeThreshold
         cursorSensitivity = try container.decodeIfPresent(Double.self, forKey: .cursorSensitivity) ?? defaults.cursorSensitivity
+        cursorMaxSpeed = try container.decodeIfPresent(Double.self, forKey: .cursorMaxSpeed) ?? defaults.cursorMaxSpeed
+        cursorMaxAcceleration = try container.decodeIfPresent(Double.self, forKey: .cursorMaxAcceleration) ?? defaults.cursorMaxAcceleration
+        cursorCurveExponent = try container.decodeIfPresent(Double.self, forKey: .cursorCurveExponent) ?? defaults.cursorCurveExponent
     }
 }
 
