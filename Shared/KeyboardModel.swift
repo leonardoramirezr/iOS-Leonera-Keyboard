@@ -239,26 +239,29 @@ struct KeyboardSettings: Codable, Hashable {
     var rowHeight: Double = 48
     /// Distancia en puntos que hay que deslizar hacia abajo para activar la acción secundaria.
     var swipeThreshold: Double = 18
-    /// Sensibilidad del cursor al mantener pulsada la barra espaciadora, de 1 a 10.
-    var cursorSensitivity: Double = 5
+    /// Aceleración máxima del cursor al mantener pulsada la barra espaciadora: velocidad del
+    /// dedo, en puntos por segundo, a la que el cursor alcanza su velocidad máxima.
+    var cursorMaxAcceleration: Double = 240
     /// Velocidad máxima del cursor en caracteres por segundo.
     var cursorMaxSpeed: Double = 60
-    /// Aceleración máxima del cursor en caracteres por segundo al cuadrado.
-    var cursorMaxAcceleration: Double = 120
     /// Forma de la curva de velocidad: 1 es lineal y 2,5 es muy progresiva.
     var cursorCurveExponent: Double = 2
 
     init() {}
 
-    /// Velocidad del dedo, en puntos por segundo, a la que el cursor alcanza su velocidad máxima.
-    var cursorFullSpeed: Double {
-        1200 / min(max(cursorSensitivity, 1), 10)
+    /// Velocidad del cursor, en caracteres por segundo, para una velocidad del dedo en puntos
+    /// por segundo. Sube según la curva hasta la aceleración máxima y, por encima, se queda en
+    /// la velocidad máxima.
+    func cursorSpeed(forFingerSpeed fingerSpeed: Double) -> Double {
+        let exponent = min(max(cursorCurveExponent, 1), 2.5)
+        let fraction = min(max(fingerSpeed, 0) / max(cursorMaxAcceleration, 1), 1)
+        return max(cursorMaxSpeed, 0) * pow(fraction, exponent)
     }
 
     private enum CodingKeys: String, CodingKey {
         case autoCapitalize, showLowercase, haptics, hapticStyle, hapticIntensity, hapticDuration
-        case keyClicks, rowHeight, swipeThreshold, cursorSensitivity
-        case cursorMaxSpeed, cursorMaxAcceleration, cursorCurveExponent
+        case keyClicks, rowHeight, swipeThreshold
+        case cursorMaxAcceleration, cursorMaxSpeed, cursorCurveExponent
     }
 
     init(from decoder: Decoder) throws {
@@ -273,9 +276,8 @@ struct KeyboardSettings: Codable, Hashable {
         keyClicks = try container.decodeIfPresent(Bool.self, forKey: .keyClicks) ?? defaults.keyClicks
         rowHeight = try container.decodeIfPresent(Double.self, forKey: .rowHeight) ?? defaults.rowHeight
         swipeThreshold = try container.decodeIfPresent(Double.self, forKey: .swipeThreshold) ?? defaults.swipeThreshold
-        cursorSensitivity = try container.decodeIfPresent(Double.self, forKey: .cursorSensitivity) ?? defaults.cursorSensitivity
-        cursorMaxSpeed = try container.decodeIfPresent(Double.self, forKey: .cursorMaxSpeed) ?? defaults.cursorMaxSpeed
         cursorMaxAcceleration = try container.decodeIfPresent(Double.self, forKey: .cursorMaxAcceleration) ?? defaults.cursorMaxAcceleration
+        cursorMaxSpeed = try container.decodeIfPresent(Double.self, forKey: .cursorMaxSpeed) ?? defaults.cursorMaxSpeed
         cursorCurveExponent = try container.decodeIfPresent(Double.self, forKey: .cursorCurveExponent) ?? defaults.cursorCurveExponent
     }
 }
