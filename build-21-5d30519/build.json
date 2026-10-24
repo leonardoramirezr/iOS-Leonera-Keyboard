@@ -1,0 +1,11 @@
+{
+  "tag": "build-21-5d30519",
+  "version": "0.5.0",
+  "build": "21",
+  "branch": "claude/haptic-on-touch-down",
+  "commit": "5d305197a8e677b153e20268453454212450bfed",
+  "message": "Fijar los identificadores de la app, el teclado y el App Group",
+  "release": false,
+  "date": "2026-10-14T04:11:47+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-21-5d30519/manifest.plist"
+}

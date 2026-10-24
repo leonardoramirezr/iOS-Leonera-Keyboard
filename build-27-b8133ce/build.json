@@ -1,0 +1,11 @@
+{
+  "tag": "build-27-b8133ce",
+  "version": "0.7.0",
+  "build": "27",
+  "branch": "claude/space-hold-cursor-movement-haqpb7",
+  "commit": "b8133cecdd407a5d83ad5c31dcec1bf625642df7",
+  "message": "Mover el cursor manteniendo pulsada la barra espaciadora",
+  "release": false,
+  "date": "2026-10-14T19:32:40+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-27-b8133ce/manifest.plist"
+}

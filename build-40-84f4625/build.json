@@ -1,0 +1,11 @@
+{
+  "tag": "build-40-84f4625",
+  "version": "0.11.0",
+  "build": "40",
+  "branch": "claude/cursor-min-acceleration",
+  "commit": "84f46257bd97c6119a0e9d7e064d187415785efb",
+  "message": "Cursor: aceleración mínima antes de empezar a moverse",
+  "release": false,
+  "date": "2026-10-24T16:16:19+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-40-84f4625/manifest.plist"
+}

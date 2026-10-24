@@ -1,0 +1,11 @@
+{
+  "tag": "build-23-92b7c57",
+  "version": "0.6.0",
+  "build": "23",
+  "branch": "claude/ecstatic-faraday-c9ryqt",
+  "commit": "92b7c5748067531e4aefeb16a253c96892853ed6",
+  "message": "Dictado: retrasar la grabación al volver al teclado y botón de check abajo a la derecha",
+  "release": false,
+  "date": "2026-10-14T16:10:15+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-23-92b7c57/manifest.plist"
+}

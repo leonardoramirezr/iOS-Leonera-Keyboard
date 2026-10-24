@@ -1,0 +1,11 @@
+{
+  "tag": "0.5.0",
+  "version": "0.5.0",
+  "build": "22",
+  "branch": "main",
+  "commit": "0d28b9a9f8e2a40e2e1698ef52a1d82b4e63398e",
+  "message": "Vibrar al tocar la tecla y fijar los identificadores de la app (#4)",
+  "release": true,
+  "date": "2026-10-14T04:25:54+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/0.5.0/manifest.plist"
+}

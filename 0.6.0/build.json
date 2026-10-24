@@ -1,0 +1,11 @@
+{
+  "tag": "0.6.0",
+  "version": "0.6.0",
+  "build": "26",
+  "branch": "main",
+  "commit": "404b2aacd00a267c8584965097c9c21e743d8ac5",
+  "message": "Dictado: grabar solo al volver al teclado, tras un retardo configurable (#5)",
+  "release": true,
+  "date": "2026-10-14T19:02:49+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/0.6.0/manifest.plist"
+}

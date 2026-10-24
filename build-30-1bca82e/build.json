@@ -1,0 +1,11 @@
+{
+  "tag": "build-30-1bca82e",
+  "version": "0.7.0",
+  "build": "30",
+  "branch": "claude/space-hold-cursor-movement-haqpb7",
+  "commit": "1bca82e1fd5d39d8a3ef2d08ee617af1256e90ae",
+  "message": "Acelerar el cursor del trackpad según la velocidad del dedo",
+  "release": false,
+  "date": "2026-10-14T21:04:45+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-30-1bca82e/manifest.plist"
+}

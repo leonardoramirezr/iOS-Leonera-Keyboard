@@ -1,0 +1,11 @@
+{
+  "tag": "0.11.0",
+  "version": "0.11.0",
+  "build": "43",
+  "branch": "main",
+  "commit": "692b9d5b5ba67103d518b4d8bbb1e5b90a388e3d",
+  "message": "Cursor: aceleración mínima antes de empezar a moverse (#10)",
+  "release": true,
+  "date": "2026-10-24T16:34:11+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/0.11.0/manifest.plist"
+}
