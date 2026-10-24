@@ -69,7 +69,7 @@ struct SettingsView: View {
                     Slider(value: settings.cursorMinAcceleration, in: 0...store.configuration.settings.cursorMaxAcceleration, step: 10)
                 }
                 VStack(alignment: .leading) {
-                    Text("Aceleración máxima:\(Int(store.configuration.settings.cursorMaxAcceleration)) pt/s")
+                    Text("Aceleración máxima: \(Int(store.configuration.settings.cursorMaxAcceleration)) pt/s")
                     Slider(value: settings.cursorMaxAcceleration, in: 50...2000, step: 10)
                 }
                 VStack(alignment: .leading) {
