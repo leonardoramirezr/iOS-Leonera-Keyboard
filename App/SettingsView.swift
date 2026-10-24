@@ -65,7 +65,11 @@ struct SettingsView: View {
                 }
                 CursorCurveChart(settings: store.configuration.settings)
                 VStack(alignment: .leading) {
-                    Text("Aceleración máxima: \(Int(store.configuration.settings.cursorMaxAcceleration)) pt/s")
+                    Text("Aceleración mínima: \(Int(store.configuration.settings.cursorMinAcceleration)) pt/s")
+                    Slider(value: settings.cursorMinAcceleration, in: 0...1000, step: 10)
+                }
+                VStack(alignment: .leading) {
+                    Text("Aceleración máxima:\(Int(store.configuration.settings.cursorMaxAcceleration)) pt/s")
                     Slider(value: settings.cursorMaxAcceleration, in: 50...2000, step: 10)
                 }
                 VStack(alignment: .leading) {
@@ -85,7 +89,7 @@ struct SettingsView: View {
             } header: {
                 Text("Tamaño y gestos")
             } footer: {
-                Text("La distancia para deslizar es cuánto hay que arrastrar una tecla hacia abajo para usar su símbolo secundario. Mantén pulsada la barra espaciadora y arrastra a izquierda o derecha para mover el cursor. La gráfica muestra la velocidad del cursor (vertical) según la aceleración del dedo (horizontal): sube con la curva hasta la aceleración máxima y, a partir de ahí, el cursor va a la velocidad máxima. La curva va de lineal a progresiva: cuanto más progresiva, más lento al principio y más rápido al final.")
+                Text("La distancia para deslizar es cuánto hay que arrastrar una tecla hacia abajo para usar su símbolo secundario. Mantén pulsada la barra espaciadora y arrastra a izquierda o derecha para mover el cursor. La gráfica muestra la velocidad del cursor (vertical) según la aceleración del dedo (horizontal): mientras la aceleración no supere la mínima, el cursor no se mueve; a partir de ella sube con la curva hasta la aceleración máxima y, a partir de ahí, el cursor va a la velocidad máxima. La curva va de lineal a progresiva: cuanto más progresiva, más lento al principio y más rápido al final.")
             }
         }
         .navigationTitle("Ajustes del teclado")
