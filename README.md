@@ -34,9 +34,9 @@ La app incluye un editor donde se puede:
   las teclas se quedan vacías y arrastrar el dedo a izquierda o derecha mueve el
   cursor. Los ajustes del cursor muestran una gráfica con la curva: la velocidad del
   cursor (en caracteres por segundo) depende de la aceleración del dedo (en puntos
-  por segundo). Sube según la curva, que va de lineal (1,0) a progresiva (2,5),
-  hasta la aceleración máxima; por encima de ella el cursor va a la velocidad
-  máxima. Cada carácter que avanza el cursor vibra según los ajustes de vibración.
+  por segundo). Por debajo de la aceleración mínima el cursor no se mueve; a partir
+  de ella sube según la curva, que va de lineal (1,0) a progresiva (2,5), hasta la
+  aceleración máxima; por encima de ella el cursor va a la velocidad máxima. Cada carácter que avanza el cursor vibra según los ajustes de vibración.
 - Configurar la vibración: tipo (Ligero, Medio, Fuerte, Suave o Rígido), intensidad y duración.
   La tecla vibra en cuanto se toca, tanto para el carácter principal como para el
   secundario (no espera a que se suelte). La vibración nunca hace esperar al teclado:
