@@ -29,12 +29,14 @@ La app incluye un editor donde se puede:
 - Editar cada tecla: acción principal, acción secundaria, etiqueta y ancho.
 - Añadir, eliminar, reordenar y mover teclas entre filas; añadir, mover y eliminar filas.
 - Ajustar mayúscula automática, minúsculas, sonido, alto de fila, la distancia
-  de deslizamiento y la sensibilidad del cursor.
+  de deslizamiento y el cursor (aceleración y velocidad máximas, y curva).
 - Mover el cursor como con un trackpad: al mantener pulsada la barra espaciadora
   las teclas se quedan vacías y arrastrar el dedo a izquierda o derecha mueve el
-  cursor según la sensibilidad elegida. El movimiento se acelera con la velocidad
-  del dedo: despacio avanza con precisión y deprisa recorre mucho texto. Cada
-  carácter que avanza el cursor vibra según los ajustes de vibración.
+  cursor. Los ajustes del cursor muestran una gráfica con la curva: la velocidad del
+  cursor (en caracteres por segundo) depende de la aceleración del dedo (en puntos
+  por segundo). Sube según la curva, que va de lineal (1,0) a progresiva (2,5),
+  hasta la aceleración máxima; por encima de ella el cursor va a la velocidad
+  máxima. Cada carácter que avanza el cursor vibra según los ajustes de vibración.
 - Configurar la vibración: tipo (Ligero, Medio, Fuerte, Suave o Rígido), intensidad y duración.
   La tecla vibra en cuanto se toca, tanto para el carácter principal como para el
   secundario (no espera a que se suelte). La vibración nunca hace esperar al teclado:

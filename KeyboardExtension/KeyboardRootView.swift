@@ -48,7 +48,7 @@ struct KeyCell: View {
     /// Posición y momento del último evento procesado por el trackpad.
     @State private var trackpadLastX: CGFloat = 0
     @State private var trackpadLastTime = Date()
-    /// Recorrido acumulado (ya acelerado) que aún no llega a un carácter completo.
+    /// Caracteres fraccionarios que aún no llegan a uno completo.
     @State private var trackpadAccumulated: CGFloat = 0
 
     /// Tiempo que hay que mantener pulsada la barra espaciadora para activar el trackpad.
@@ -164,35 +164,28 @@ struct KeyCell: View {
         trackpadTimer = nil
     }
 
-    /// Mueve el cursor un carácter por cada tramo que recorre el dedo y vibra por cada
-    /// carácter desplazado. El recorrido se acelera según la velocidad: despacio el cursor
-    /// avanza con precisión y deprisa recorre muchos caracteres. El tamaño del tramo
-    /// depende de la sensibilidad.
+    /// Mueve el cursor según la velocidad del dedo y vibra por cada carácter desplazado.
+    /// La velocidad del cursor sale de la curva de los ajustes, así que con el dedo parado
+    /// no avanza y, en cuanto cambia de dirección, cambia de sentido.
     private func moveCursor() {
+        let settings = state.settings
         let delta = dragX - trackpadLastX
-        let elapsed = max(dragTime.timeIntervalSince(trackpadLastTime), 0.001)
+        let elapsed = CGFloat(max(dragTime.timeIntervalSince(trackpadLastTime), 0.001))
         trackpadLastX = dragX
         trackpadLastTime = dragTime
-        guard delta != 0 else { return }
 
-        let speed = abs(delta) / CGFloat(elapsed)
-        trackpadAccumulated += delta * Self.cursorAcceleration(forSpeed: speed)
+        let direction: CGFloat = delta < 0 ? -1 : 1
+        let speed = settings.cursorSpeed(forFingerSpeed: Double(abs(delta) / elapsed))
+        trackpadAccumulated += direction * CGFloat(speed) * elapsed
 
-        let step = CGFloat(state.settings.cursorPointsPerCharacter)
-        let steps = Int(trackpadAccumulated / step)
+        let steps = Int(trackpadAccumulated)
         guard steps != 0 else { return }
-        trackpadAccumulated -= CGFloat(steps) * step
+        trackpadAccumulated -= CGFloat(steps)
         let action = KeyAction(steps < 0 ? .cursorLeft : .cursorRight)
         for _ in 0..<abs(steps) {
             state.playCursorStepFeedback()
             perform(action)
         }
-    }
-
-    /// Factor de aceleración según la velocidad del dedo en puntos por segundo:
-    /// 0,5 por debajo de 100 pt/s, 1 hacia 200 pt/s y hasta 5 a partir de 1000 pt/s.
-    private static func cursorAcceleration(forSpeed speed: CGFloat) -> CGFloat {
-        min(max(speed / 200, 0.5), 5)
     }
 
     private func endTrackpad() {

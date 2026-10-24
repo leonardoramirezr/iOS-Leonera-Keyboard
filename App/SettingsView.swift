@@ -63,20 +63,29 @@ struct SettingsView: View {
                     Text("Distancia para deslizar: \(Int(store.configuration.settings.swipeThreshold)) pt")
                     Slider(value: settings.swipeThreshold, in: 8...40, step: 1)
                 }
+                CursorCurveChart(settings: store.configuration.settings)
                 VStack(alignment: .leading) {
-                    Text("Sensibilidad del cursor: \(String(format: "%.1f", store.configuration.settings.cursorSensitivity))")
-                    Slider(value: settings.cursorSensitivity, in: 1.0...10.0, step: 0.1) {
-                        Text("Sensibilidad del cursor")
+                    Text("Aceleración máxima: \(Int(store.configuration.settings.cursorMaxAcceleration)) pt/s")
+                    Slider(value: settings.cursorMaxAcceleration, in: 50...2000, step: 10)
+                }
+                VStack(alignment: .leading) {
+                    Text("Velocidad máxima del cursor: \(Int(store.configuration.settings.cursorMaxSpeed)) car/s")
+                    Slider(value: settings.cursorMaxSpeed, in: 5...200, step: 1)
+                }
+                VStack(alignment: .leading) {
+                    Text("Curva del cursor: \(String(format: "%.1f", store.configuration.settings.cursorCurveExponent))")
+                    Slider(value: settings.cursorCurveExponent, in: 1.0...2.5, step: 0.1) {
+                        Text("Curva del cursor")
                     } minimumValueLabel: {
-                        Image(systemName: "tortoise")
+                        Text("Lineal").font(.caption)
                     } maximumValueLabel: {
-                        Image(systemName: "hare")
+                        Text("Progresiva").font(.caption)
                     }
                 }
             } header: {
                 Text("Tamaño y gestos")
             } footer: {
-                Text("La distancia para deslizar es cuánto hay que arrastrar una tecla hacia abajo para usar su símbolo secundario. Mantén pulsada la barra espaciadora y arrastra a izquierda o derecha para mover el cursor; con más sensibilidad se mueve más con menos recorrido. Si mueves el dedo despacio el cursor avanza carácter a carácter; si lo mueves deprisa, recorre mucho más texto.")
+                Text("La distancia para deslizar es cuánto hay que arrastrar una tecla hacia abajo para usar su símbolo secundario. Mantén pulsada la barra espaciadora y arrastra a izquierda o derecha para mover el cursor. La gráfica muestra la velocidad del cursor (vertical) según la aceleración del dedo (horizontal): sube con la curva hasta la aceleración máxima y, a partir de ahí, el cursor va a la velocidad máxima. La curva va de lineal a progresiva: cuanto más progresiva, más lento al principio y más rápido al final.")
             }
         }
         .navigationTitle("Ajustes del teclado")
