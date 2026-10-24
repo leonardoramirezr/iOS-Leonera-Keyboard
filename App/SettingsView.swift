@@ -66,7 +66,7 @@ struct SettingsView: View {
                 CursorCurveChart(settings: store.configuration.settings)
                 VStack(alignment: .leading) {
                     Text("Aceleración mínima: \(Int(store.configuration.settings.cursorMinAcceleration)) pt/s")
-                    Slider(value: settings.cursorMinAcceleration, in: 0...1000, step: 10)
+                    Slider(value: settings.cursorMinAcceleration, in: 0...store.configuration.settings.cursorMaxAcceleration, step: 10)
                 }
                 VStack(alignment: .leading) {
                     Text("Aceleración máxima:\(Int(store.configuration.settings.cursorMaxAcceleration)) pt/s")
