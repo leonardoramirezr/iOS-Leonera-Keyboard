@@ -55,6 +55,29 @@ struct SettingsView: View {
             }
 
             Section {
+                HitAreaPreview(settings: store.configuration.settings)
+                    .listRowInsets(EdgeInsets())
+                Picker("Forma", selection: settings.hitShape) {
+                    ForEach(KeyHitShape.allCases) { shape in
+                        Text(shape.displayName).tag(shape)
+                    }
+                }
+                .pickerStyle(.segmented)
+                VStack(alignment: .leading) {
+                    Text("Anchura: \(Int(store.configuration.settings.hitWidth)) %")
+                    Slider(value: settings.hitWidth, in: 20...100, step: 5)
+                }
+                VStack(alignment: .leading) {
+                    Text("Altura: \(Int(store.configuration.settings.hitHeight)) %")
+                    Slider(value: settings.hitHeight, in: 20...100, step: 5)
+                }
+            } header: {
+                Text("Área de toque")
+            } footer: {
+                Text("El área de toque va centrada en cada tecla: tocar fuera de ella no hace nada. Los porcentajes son del tamaño de cada tecla; al 100 % ocupa toda la tecla. Con la forma circular, si anchura y altura son distintas, el área es un óvalo.")
+            }
+
+            Section {
                 VStack(alignment: .leading) {
                     Text("Alto de fila: \(Int(store.configuration.settings.rowHeight)) pt")
                     Slider(value: settings.rowHeight, in: 36...64, step: 1)
@@ -103,5 +126,24 @@ struct SettingsView: View {
 
     private func playHapticPreview() {
         haptics.play(store.configuration.settings)
+    }
+}
+
+/// Una tecla de ejemplo con su área de toque dibujada encima.
+private struct HitAreaPreview: View {
+    let settings: KeyboardSettings
+    private let rowHeight: CGFloat = 56
+
+    var body: some View {
+        let key = KeyDefinition(primary: .character("a"), secondary: .character("á"))
+        let area = KeyHitArea(shape: settings.hitShape, widthPercent: settings.hitWidth, heightPercent: settings.hitHeight)
+        ZStack {
+            KeyCapView(key: key, rowHeight: rowHeight)
+            area.fill(KeyboardPalette.active.opacity(0.25))
+            area.stroke(KeyboardPalette.active, lineWidth: 2)
+        }
+        .frame(width: 96, height: rowHeight)
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 8)
     }
 }

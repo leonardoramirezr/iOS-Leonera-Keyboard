@@ -30,6 +30,28 @@ enum KeyboardPalette {
     }
 }
 
+/// Área de toque centrada en la tecla. Fuera de ella la tecla no responde a los gestos.
+struct KeyHitArea: Shape {
+    var shape: KeyHitShape
+    /// Anchura y altura en porcentaje del tamaño de la tecla.
+    var widthPercent: Double
+    var heightPercent: Double
+
+    func path(in rect: CGRect) -> Path {
+        let width = rect.width * Self.fraction(widthPercent)
+        let height = rect.height * Self.fraction(heightPercent)
+        let area = CGRect(x: rect.midX - width / 2, y: rect.midY - height / 2, width: width, height: height)
+        switch shape {
+        case .square: return Path(area)
+        case .circle: return Path(ellipseIn: area)
+        }
+    }
+
+    private static func fraction(_ percent: Double) -> CGFloat {
+        CGFloat(min(max(percent, 1), 100) / 100)
+    }
+}
+
 /// Dibuja una tecla: acción principal grande y acción secundaria pequeña arriba.
 struct KeyCapView: View {
     let key: KeyDefinition

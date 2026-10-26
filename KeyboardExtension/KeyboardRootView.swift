@@ -25,7 +25,8 @@ struct KeyboardRootView: View {
 }
 
 /// Una tecla interactiva: tocar ejecuta la acción principal y deslizar hacia
-/// abajo ejecuta la secundaria. Vibra al tocarla, antes de saber cuál de las dos
+/// abajo ejecuta la secundaria. Solo responde dentro del área de toque centrada
+/// (ajustable). Vibra al tocarla, antes de saber cuál de las dos
 /// se ejecutará. Las teclas de borrar o mover el cursor se repiten mientras se
 /// mantienen pulsadas. Mantener pulsada la barra espaciadora activa el modo
 /// trackpad: el teclado se queda vacío y arrastrar a izquierda o derecha mueve
@@ -70,7 +71,11 @@ struct KeyCell: View {
             isBlank: state.isTrackpadActive,
             rowHeight: state.rowHeight
         )
-        .contentShape(Rectangle())
+        .contentShape(KeyHitArea(
+            shape: state.settings.hitShape,
+            widthPercent: state.settings.hitWidth,
+            heightPercent: state.settings.hitHeight
+        ))
         .gesture(
             DragGesture(minimumDistance: 0, coordinateSpace: .local)
                 .onChanged { value in
