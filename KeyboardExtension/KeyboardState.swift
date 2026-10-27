@@ -5,8 +5,12 @@ final class KeyboardState: ObservableObject {
     @Published var configuration: KeyboardConfiguration
     @Published var rows: [KeyRow]
     @Published var shift: ShiftState = .off
-    @Published var showingEmoji = false
-    @Published var showingDictation = false
+    @Published var showingEmoji = false {
+        didSet { KeyboardScreenStorage.save(screen) }
+    }
+    @Published var showingDictation = false {
+        didSet { KeyboardScreenStorage.save(screen) }
+    }
     /// Al mantener pulsada la barra espaciadora el teclado funciona como un trackpad:
     /// las teclas se muestran vacías y arrastrar el dedo mueve el cursor.
     @Published var isTrackpadActive = false
@@ -28,6 +32,15 @@ final class KeyboardState: ObservableObject {
         let configuration = ConfigurationStorage.load()
         self.configuration = configuration
         self.rows = configuration.layout.rows
+    }
+
+    /// Pantalla visible: la de grabación tiene prioridad sobre los emojis.
+    var screen: KeyboardScreen {
+        get { showingDictation ? .dictation : showingEmoji ? .emoji : .letters }
+        set {
+            showingEmoji = newValue == .emoji
+            showingDictation = newValue == .dictation
+        }
     }
 
     var settings: KeyboardSettings { configuration.settings }
@@ -68,4 +81,34 @@ final class KeyboardState: ObservableObject {
 enum KeyboardMetrics {
     static let verticalPadding: CGFloat = 4
     static let horizontalPadding: CGFloat = 3
+}
+
+/// Pantalla que muestra el teclado.
+enum KeyboardScreen: String {
+    case letters
+    case emoji
+    case dictation
+}
+
+/// Guarda la pantalla del teclado en el App Group. `viewWillAppear` se llama cada vez
+/// que el teclado reaparece (p. ej. al volver de la app de Leonera tras grabar), y la
+/// extensión puede volver a crearse entonces, así que la pantalla va a disco.
+enum KeyboardScreenStorage {
+    private static let fileName = "keyboardScreen.txt"
+
+    private static var fileURL: URL? {
+        ConfigurationStorage.containerURL?.appendingPathComponent(fileName)
+    }
+
+    static func load() -> KeyboardScreen {
+        guard let url = fileURL, let raw = try? String(contentsOf: url, encoding: .utf8),
+              let screen = KeyboardScreen(rawValue: raw)
+        else { return .letters }
+        return screen
+    }
+
+    static func save(_ screen: KeyboardScreen) {
+        guard let url = fileURL else { return }
+        try? Data(screen.rawValue.utf8).write(to: url, options: .atomic)
+    }
 }

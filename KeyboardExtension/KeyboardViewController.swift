@@ -72,8 +72,8 @@ final class KeyboardViewController: UIInputViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        state.showingEmoji = false
-        state.showingDictation = false
+        // Vuelve a la pantalla que estaba abierta (teclado, emojis o grabación).
+        state.screen = KeyboardScreenStorage.load()
         state.needsInputModeSwitchKey = needsInputModeSwitchKey
         reloadConfiguration()
         updateAutoCapitalization()
