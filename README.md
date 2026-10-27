@@ -79,6 +79,12 @@ plano (con el indicador naranja) para los siguientes dictados y se desactiva tra
 5 minutos sin usarlo o desde la app. Si el sistema sí permite
 grabar desde el teclado, se graba directamente sin abrir la app.
 
+El teclado recuerda la pantalla que tenía abierta (teclado, emojis o dictado) y la
+vuelve a mostrar al reaparecer, así que tras grabar en la app de Leonera vuelves al
+dictado. La pantalla de grabación de la app tiene el botón «Volver a Leonera Keyboard»,
+que solo cierra esa pantalla: iOS no deja a una app abrir la anterior, así que para
+volver a la app donde escribías sigue haciendo falta el botón «◀︎» de la barra de estado.
+
 Dictar requiere **Permitir acceso completo** y permiso de micrófono. Si ya tenías
 una distribución guardada, la tecla Ñ no cambia: añade la acción «Dictar» a la
 tecla que quieras desde el editor o restablece la distribución por defecto.
