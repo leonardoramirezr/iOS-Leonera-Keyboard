@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct SettingsView: View {
     @EnvironmentObject private var store: ConfigurationStore
@@ -55,7 +56,7 @@ struct SettingsView: View {
             }
 
             Section {
-                HitAreaPreview(settings: store.configuration.settings)
+                HitAreaPreview(configuration: store.configuration)
                     .listRowInsets(EdgeInsets())
                 Picker("Forma", selection: settings.hitShape) {
                     ForEach(KeyHitShape.allCases) { shape in
@@ -74,7 +75,7 @@ struct SettingsView: View {
             } header: {
                 Text("Área de toque")
             } footer: {
-                Text("El área de toque va centrada en cada tecla: tocar fuera de ella no hace nada. Los porcentajes son del tamaño de cada tecla; al 100 % ocupa toda la tecla. Con la forma circular, si anchura y altura son distintas, el área es un óvalo.")
+                Text("El área de toque va centrada en cada tecla: tocar fuera de ella no hace nada. Los porcentajes son del tamaño de cada tecla; al 100 % ocupa toda la tecla. La barra espaciadora siempre ocupa toda la anchura: solo le afecta la altura. Con la forma circular, si anchura y altura son distintas, el área es un óvalo.")
             }
 
             Section {
@@ -129,21 +130,33 @@ struct SettingsView: View {
     }
 }
 
-/// Una tecla de ejemplo con su área de toque dibujada encima.
+/// Una tecla de ejemplo con su área de toque dibujada encima, a tamaño real: el mismo
+/// ancho y alto que tiene en el teclado de este dispositivo con la distribución actual.
 private struct HitAreaPreview: View {
-    let settings: KeyboardSettings
-    private let rowHeight: CGFloat = 56
+    let configuration: KeyboardConfiguration
+    @Environment(\.colorScheme) private var colorScheme
+
+    private let key = KeyDefinition(primary: .character("a"), secondary: .character("á"))
 
     var body: some View {
-        let key = KeyDefinition(primary: .character("a"), secondary: .character("á"))
-        let area = KeyHitArea(shape: settings.hitShape, widthPercent: settings.hitWidth, heightPercent: settings.hitHeight)
+        let rowHeight = CGFloat(min(max(configuration.settings.rowHeight, 30), 80))
+        let area = KeyHitArea(key: key, settings: configuration.settings)
         ZStack {
             KeyCapView(key: key, rowHeight: rowHeight)
             area.fill(KeyboardPalette.active.opacity(0.25))
             area.stroke(KeyboardPalette.active, lineWidth: 2)
         }
-        .frame(width: 96, height: rowHeight)
+        .frame(width: keyWidth, height: rowHeight)
         .frame(maxWidth: .infinity)
         .padding(.vertical, 8)
+        .background(KeyboardPalette.background(colorScheme))
+    }
+
+    /// Ancho de una unidad de tecla: la pantalla menos los márgenes, repartida entre
+    /// las unidades de la fila más ancha, igual que en `KeyboardGrid`.
+    private var keyWidth: CGFloat {
+        let keyboardWidth = UIScreen.main.bounds.width - 2 * KeyboardMetrics.horizontalPadding
+        let maxUnits = configuration.layout.rows.map(\.totalUnits).max() ?? 1
+        return keyboardWidth / CGFloat(max(1, maxUnits)) * CGFloat(key.width)
     }
 }

@@ -4,6 +4,12 @@ enum ShiftState {
     case off, on, locked
 }
 
+/// Márgenes del teclado dentro de la pantalla.
+enum KeyboardMetrics {
+    static let verticalPadding: CGFloat = 4
+    static let horizontalPadding: CGFloat = 3
+}
+
 /// Colores aproximados a los del teclado del sistema.
 enum KeyboardPalette {
     static func background(_ scheme: ColorScheme) -> Color {
@@ -49,6 +55,18 @@ struct KeyHitArea: Shape {
 
     private static func fraction(_ percent: Double) -> CGFloat {
         CGFloat(min(max(percent, 1), 100) / 100)
+    }
+}
+
+extension KeyHitArea {
+    /// Área de toque de una tecla con los ajustes dados. La barra espaciadora siempre ocupa
+    /// toda la anchura: el ajuste horizontal solo afecta a las demás teclas.
+    init(key: KeyDefinition, settings: KeyboardSettings) {
+        self.init(
+            shape: settings.hitShape,
+            widthPercent: key.primary.type == .space ? 100 : settings.hitWidth,
+            heightPercent: settings.hitHeight
+        )
     }
 }
 
