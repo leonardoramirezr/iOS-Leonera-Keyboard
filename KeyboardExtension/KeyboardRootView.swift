@@ -71,11 +71,7 @@ struct KeyCell: View {
             isBlank: state.isTrackpadActive,
             rowHeight: state.rowHeight
         )
-        .contentShape(KeyHitArea(
-            shape: state.settings.hitShape,
-            widthPercent: state.settings.hitWidth,
-            heightPercent: state.settings.hitHeight
-        ))
+        .contentShape(KeyHitArea(key: key, settings: state.settings))
         .gesture(
             DragGesture(minimumDistance: 0, coordinateSpace: .local)
                 .onChanged { value in

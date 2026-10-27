@@ -78,11 +78,6 @@ final class KeyboardState: ObservableObject {
     }
 }
 
-enum KeyboardMetrics {
-    static let verticalPadding: CGFloat = 4
-    static let horizontalPadding: CGFloat = 3
-}
-
 /// Pantalla que muestra el teclado.
 enum KeyboardScreen: String {
     case letters
