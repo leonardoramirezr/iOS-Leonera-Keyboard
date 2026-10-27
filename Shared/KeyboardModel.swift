@@ -220,6 +220,21 @@ enum HapticStyle: String, Codable, CaseIterable, Identifiable {
     }
 }
 
+/// Forma del área de toque, centrada en cada tecla. Fuera de ella la tecla no reacciona.
+enum KeyHitShape: String, Codable, CaseIterable, Identifiable {
+    case square
+    case circle
+
+    var id: String { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .square: return "Cuadrada"
+        case .circle: return "Circular"
+        }
+    }
+}
+
 struct KeyboardSettings: Codable, Hashable {
     /// Activa mayúsculas automáticamente al empezar una frase.
     var autoCapitalize = true
@@ -239,6 +254,12 @@ struct KeyboardSettings: Codable, Hashable {
     var rowHeight: Double = 48
     /// Distancia en puntos que hay que deslizar hacia abajo para activar la acción secundaria.
     var swipeThreshold: Double = 18
+    /// Forma del área que responde a toques, centrada en la tecla.
+    var hitShape: KeyHitShape = .square
+    /// Anchura del área de toque en porcentaje del ancho de la tecla (100 = toda la tecla).
+    var hitWidth: Double = 100
+    /// Altura del área de toque en porcentaje del alto de la tecla (100 = toda la tecla).
+    var hitHeight: Double = 100
     /// Aceleración mínima del cursor al mantener pulsada la barra espaciadora: velocidad del
     /// dedo, en puntos por segundo, a partir de la cual el cursor empieza a moverse. Por debajo
     /// no se mueve.
@@ -265,7 +286,7 @@ struct KeyboardSettings: Codable, Hashable {
 
     private enum CodingKeys: String, CodingKey {
         case autoCapitalize, showLowercase, haptics, hapticStyle, hapticIntensity, hapticDuration
-        case keyClicks, rowHeight, swipeThreshold
+        case keyClicks, rowHeight, swipeThreshold, hitShape, hitWidth, hitHeight
         case cursorMinAcceleration, cursorMaxAcceleration, cursorMaxSpeed, cursorCurveExponent
     }
 
@@ -281,6 +302,9 @@ struct KeyboardSettings: Codable, Hashable {
         keyClicks = try container.decodeIfPresent(Bool.self, forKey: .keyClicks) ?? defaults.keyClicks
         rowHeight = try container.decodeIfPresent(Double.self, forKey: .rowHeight) ?? defaults.rowHeight
         swipeThreshold = try container.decodeIfPresent(Double.self, forKey: .swipeThreshold) ?? defaults.swipeThreshold
+        hitShape = (try? container.decode(KeyHitShape.self, forKey: .hitShape)) ?? defaults.hitShape
+        hitWidth = try container.decodeIfPresent(Double.self, forKey: .hitWidth) ?? defaults.hitWidth
+        hitHeight = try container.decodeIfPresent(Double.self, forKey: .hitHeight) ?? defaults.hitHeight
         cursorMinAcceleration = try container.decodeIfPresent(Double.self, forKey: .cursorMinAcceleration) ?? defaults.cursorMinAcceleration
         cursorMaxAcceleration = try container.decodeIfPresent(Double.self, forKey: .cursorMaxAcceleration) ?? defaults.cursorMaxAcceleration
         cursorMaxSpeed = try container.decodeIfPresent(Double.self, forKey: .cursorMaxSpeed) ?? defaults.cursorMaxSpeed
