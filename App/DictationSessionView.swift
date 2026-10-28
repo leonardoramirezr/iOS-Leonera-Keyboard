@@ -37,10 +37,11 @@ struct DictationSessionView: View {
                             dismiss()
                         }
                     }
-                    // Al alcance del pulgar. iOS no deja a la app abrir la anterior: esto solo
-                    // cierra esta pantalla, y para volver a la app donde escribías hay que tocar «◀︎».
+                    // Al alcance del pulgar: vuelve a la app donde escribías, como «◀︎».
+                    // Si no hay app anterior, solo cierra esta pantalla.
                     Button("Volver a Leonera Keyboard") {
                         dismiss()
+                        PreviousApp.open()
                     }
                     .font(.headline)
                 }
