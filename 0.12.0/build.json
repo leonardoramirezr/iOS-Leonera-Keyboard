@@ -1,0 +1,11 @@
+{
+  "tag": "0.12.0",
+  "version": "0.12.0",
+  "build": "46",
+  "branch": "main",
+  "commit": "bd622532cdfed91a4d33e2f791e0571a74ba6412",
+  "message": "Recordar la pantalla del teclado y añadir botón de volver en la grabación (#12)",
+  "release": true,
+  "date": "2026-10-27T04:51:13+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/0.12.0/manifest.plist"
+}

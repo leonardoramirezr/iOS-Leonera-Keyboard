@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonera Keyboard</title>
+<link rel="apple-touch-icon" href="build-51-c3056c0/icon-512.png">
+<style>
+  :root {
+    --bg: #f2f2f7; --card: #ffffff; --text: #1c1c1e; --muted: #6e6e73;
+    --accent: #0a84ff; --border: #d1d1d6; --badge: #e5e5ea; --stable: #34c759;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #000000; --card: #1c1c1e; --text: #f2f2f7; --muted: #98989f;
+            --border: #38383a; --badge: #2c2c2e; --stable: #30d158; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px 16px; background: var(--bg); color: var(--text);
+    font: 17px/1.45 -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  }
+  main { max-width: 560px; margin: 0 auto; }
+  .card { background: var(--card); border-radius: 18px; padding: 20px; margin-bottom: 16px; }
+  .app { display: flex; align-items: center; gap: 16px; }
+  .app img { width: 72px; height: 72px; border-radius: 16px; border: 1px solid var(--border); }
+  h1 { font-size: 22px; margin: 0; }
+  h2 { font-size: 17px; margin: 0 0 8px; }
+  .meta { color: var(--muted); font-size: 15px; margin: 2px 0 0; overflow-wrap: anywhere; }
+  .install {
+    display: block; margin-top: 16px; padding: 14px; border-radius: 12px; text-align: center;
+    background: var(--accent); color: #fff; font-weight: 600; text-decoration: none;
+  }
+  .note { color: var(--muted); font-size: 15px; margin: 12px 0 0; }
+  .warning { display: none; color: #ff9f0a; font-size: 15px; margin: 12px 0 0; }
+  .builds { list-style: none; margin: 0; padding: 0; }
+  .builds li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--border); }
+  .builds li:first-child { border-top: 0; padding-top: 0; }
+  .builds .info { flex: 1; min-width: 0; }
+  .builds .tag { font-weight: 600; text-decoration: none; color: var(--text); overflow-wrap: anywhere; }
+  .builds .message { font-size: 15px; margin: 2px 0 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .builds .get {
+    flex: none; padding: 6px 16px; border-radius: 999px; background: var(--badge);
+    color: var(--accent); font-weight: 600; font-size: 15px; text-decoration: none;
+  }
+  .badge {
+    display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 13px;
+    background: var(--badge); color: var(--muted); vertical-align: 1px; margin-left: 4px;
+  }
+  .badge.stable { background: var(--stable); color: #fff; }
+  ol { margin: 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); }
+  footer { color: var(--muted); font-size: 13px; text-align: center; }
+</style>
+</head>
+<body>
+<main>
+  <section class="card">
+    <div class="app">
+      <img src="build-51-c3056c0/icon-512.png" alt="">
+      <div>
+        <h1>Leonera Keyboard</h1>
+        <p class="meta">Última versión estable: 0.14.0 · 2026-10-27 12:58 UTC</p>
+      </div>
+    </div>
+    <a class="install" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2F0.14.0%2Fmanifest.plist">Instalar 0.14.0</a>
+    <p class="warning" id="not-ios">Abre esta página en Safari desde el iPhone o iPad para instalar la app.</p>
+    <p class="note">Solo se instala en los dispositivos registrados en el perfil Ad Hoc.</p>
+  </section>
+  <section class="card">
+    <h2>Builds</h2>
+    <ul class="builds">
+      <li>
+        <div class="info">
+          <a class="tag" href="build-51-c3056c0/">build-51-c3056c0</a> <span class="badge">claude/quitar-volver-y-reordenar-dictado</span>
+          <p class="meta message">Quitar botón «Volver» y reordenar pantalla de dictado</p>
+          <p class="meta">2026-10-28 03:32 UTC · c3056c0</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-51-c3056c0%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-50-1563240/">build-50-1563240</a> <span class="badge">volver-app-anterior</span>
+          <p class="meta message">Volver a la app anterior desde la pantalla de grabación</p>
+          <p class="meta">2026-10-28 02:00 UTC · 1563240</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-50-1563240%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="0.14.0/">0.14.0</a> <span class="badge stable">estable</span>
+          <p class="meta message">Vista previa del área de toque a tamaño real y espacio a toda la anchura (#13)</p>
+          <p class="meta">2026-10-27 12:58 UTC · fcc67ac</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2F0.14.0%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-48-bd3ec5d/">build-48-bd3ec5d</a> <span class="badge">feature/hit-area-real-size</span>
+          <p class="meta message">Vista previa del área de toque a tamaño real y espacio a toda la anchura</p>
+          <p class="meta">2026-10-27 12:57 UTC · bd3ec5d</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-48-bd3ec5d%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="0.13.0/">0.13.0</a> <span class="badge stable">estable</span>
+          <p class="meta message">Área de toque configurable en cada tecla (#11)</p>
+          <p class="meta">2026-10-27 04:53 UTC · c8b2802</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2F0.13.0%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="0.12.0/">0.12.0</a> <span class="badge stable">estable</span>
+          <p class="meta message">Recordar la pantalla del teclado y añadir botón de volver en la grabación (#12)</p>
+          <p class="meta">2026-10-27 04:51 UTC · bd62253</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2F0.12.0%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-45-ece338b/">build-45-ece338b</a> <span class="badge">claude/recording-keyboard-return-mjijop</span>
+          <p class="meta message">Recordar la pantalla del teclado y añadir botón de volver en la grabación</p>
+          <p class="meta">2026-10-27 01:20 UTC · ece338b</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-45-ece338b%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-44-1190787/">build-44-1190787</a> <span class="badge">claude/hit-area-shape</span>
+          <p class="meta message">Área de toque configurable en cada tecla</p>
+          <p class="meta">2026-10-26 19:12 UTC · 1190787</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-44-1190787%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="0.11.0/">0.11.0</a> <span class="badge stable">estable</span>
+          <p class="meta message">Cursor: aceleración mínima antes de empezar a moverse (#10)</p>
+          <p class="meta">2026-10-24 16:34 UTC · 692b9d5</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2F0.11.0%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-42-fa37d4f/">build-42-fa37d4f</a> <span class="badge">claude/cursor-min-acceleration</span>
+          <p class="meta message">Cursor: restaurar el espacio en la etiqueta de aceleración máxima</p>
+          <p class="meta">2026-10-24 16:20 UTC · fa37d4f</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-42-fa37d4f%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-41-8a5f5f9/">build-41-8a5f5f9</a> <span class="badge">claude/cursor-min-acceleration</span>
+          <p class="meta message">Cursor: limitar la aceleración mínima a la máxima</p>
+          <p class="meta">2026-10-24 16:18 UTC · 8a5f5f9</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-41-8a5f5f9%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-40-84f4625/">build-40-84f4625</a> <span class="badge">claude/cursor-min-acceleration</span>
+          <p class="meta message">Cursor: aceleración mínima antes de empezar a moverse</p>
+          <p class="meta">2026-10-24 16:16 UTC · 84f4625</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-40-84f4625%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="0.10.0/">0.10.0</a> <span class="badge stable">estable</span>
+          <p class="meta message">Cursor del trackpad con velocidad máxima, aceleración y curva (#9)</p>
+          <p class="meta">2026-10-24 03:44 UTC · f830013</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2F0.10.0%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-38-a89f52a/">build-38-a89f52a</a> <span class="badge">claude/trackpad-cursor-curve</span>
+          <p class="meta message">Gráfica de la curva del cursor y aceleración máxima como velocidad del dedo</p>
+          <p class="meta">2026-10-23 23:16 UTC · a89f52a</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-38-a89f52a%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-37-ca9ca6a/">build-37-ca9ca6a</a> <span class="badge">claude/trackpad-cursor-curve</span>
+          <p class="meta message">Cursor del trackpad con velocidad máxima, aceleración y curva</p>
+          <p class="meta">2026-10-23 22:57 UTC · ca9ca6a</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-37-ca9ca6a%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="0.9.0/">0.9.0</a> <span class="badge stable">estable</span>
+          <p class="meta message">Vibrar por cada carácter que mueve el cursor (#8)</p>
+          <p class="meta">2026-10-22 14:41 UTC · 90e118e</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2F0.9.0%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-35-bcd07d1/">build-35-bcd07d1</a> <span class="badge">claude/haptic-cursor-movement-c8x108</span>
+          <p class="meta message">Vibrar por cada carácter que mueve el cursor</p>
+          <p class="meta">2026-10-22 14:24 UTC · bcd07d1</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-35-bcd07d1%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="0.8.0/">0.8.0</a> <span class="badge stable">estable</span>
+          <p class="meta message">Dictado: cerrar el micrófono al salir del dictado salvo con el cierre automático activado (#7)</p>
+          <p class="meta">2026-10-22 05:24 UTC · 77397ee</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2F0.8.0%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-33-98e0271/">build-33-98e0271</a> <span class="badge">claude/auto-mic-shutdown-psm5o5</span>
+          <p class="meta message">Merge remote-tracking branch &#x27;origin/main&#x27; into claude/auto-mic-shutdown-psm5o5</p>
+          <p class="meta">2026-10-22 01:47 UTC · 98e0271</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-33-98e0271%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="0.7.0/">0.7.0</a> <span class="badge stable">estable</span>
+          <p class="meta message">Mover el cursor manteniendo pulsada la barra espaciadora (#6)</p>
+          <p class="meta">2026-10-22 01:21 UTC · 28cf97c</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2F0.7.0%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-31-8f828c7/">build-31-8f828c7</a> <span class="badge">claude/auto-mic-shutdown-psm5o5</span>
+          <p class="meta message">Dictado: cerrar el micrófono al salir del dictado salvo con el cierre automático activado</p>
+          <p class="meta">2026-10-22 00:55 UTC · 8f828c7</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-31-8f828c7%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-30-1bca82e/">build-30-1bca82e</a> <span class="badge">claude/space-hold-cursor-movement-haqpb7</span>
+          <p class="meta message">Acelerar el cursor del trackpad según la velocidad del dedo</p>
+          <p class="meta">2026-10-14 21:04 UTC · 1bca82e</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-30-1bca82e%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-29-40b8682/">build-29-40b8682</a> <span class="badge">claude/space-hold-cursor-movement-haqpb7</span>
+          <p class="meta message">Actualizar SettingsView.swift</p>
+          <p class="meta">2026-10-14 20:50 UTC · 40b8682</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-29-40b8682%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-28-08fc0be/">build-28-08fc0be</a> <span class="badge">claude/space-hold-cursor-movement-haqpb7</span>
+          <p class="meta message">Actualizar SettingsView.swift</p>
+          <p class="meta">2026-10-14 20:31 UTC · 08fc0be</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-28-08fc0be%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-27-b8133ce/">build-27-b8133ce</a> <span class="badge">claude/space-hold-cursor-movement-haqpb7</span>
+          <p class="meta message">Mover el cursor manteniendo pulsada la barra espaciadora</p>
+          <p class="meta">2026-10-14 19:32 UTC · b8133ce</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-27-b8133ce%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="0.6.0/">0.6.0</a> <span class="badge stable">estable</span>
+          <p class="meta message">Dictado: grabar solo al volver al teclado, tras un retardo configurable (#5)</p>
+          <p class="meta">2026-10-14 19:02 UTC · 404b2aa</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2F0.6.0%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-25-8d0727d/">build-25-8d0727d</a> <span class="badge">claude/ecstatic-faraday-c9ryqt</span>
+          <p class="meta message">Dictado: mostrar la pantalla de grabación al volver al teclado durante la espera</p>
+          <p class="meta">2026-10-14 18:58 UTC · 8d0727d</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-25-8d0727d%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-24-9d9825b/">build-24-9d9825b</a> <span class="badge">claude/ecstatic-faraday-c9ryqt</span>
+          <p class="meta message">Dictado: grabar solo al volver al teclado, quitar el botón de check y mencionar el gesto de cambio de app</p>
+          <p class="meta">2026-10-14 18:32 UTC · 9d9825b</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-24-9d9825b%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-23-92b7c57/">build-23-92b7c57</a> <span class="badge">claude/ecstatic-faraday-c9ryqt</span>
+          <p class="meta message">Dictado: retrasar la grabación al volver al teclado y botón de check abajo a la derecha</p>
+          <p class="meta">2026-10-14 16:10 UTC · 92b7c57</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-23-92b7c57%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="0.5.0/">0.5.0</a> <span class="badge stable">estable</span>
+          <p class="meta message">Vibrar al tocar la tecla y fijar los identificadores de la app (#4)</p>
+          <p class="meta">2026-10-14 04:25 UTC · 0d28b9a</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2F0.5.0%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-21-5d30519/">build-21-5d30519</a> <span class="badge">claude/haptic-on-touch-down</span>
+          <p class="meta message">Fijar los identificadores de la app, el teclado y el App Group</p>
+          <p class="meta">2026-10-14 04:11 UTC · 5d30519</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-21-5d30519%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="0.4.0/">0.4.0</a> <span class="badge stable">estable</span>
+          <p class="meta message">Merge pull request #3 from leonardoramirezr/claude/adhoc-pages</p>
+          <p class="meta">2026-10-13 06:48 UTC · efedf82</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FLeoneraKeyboard%2F0.4.0%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-18-0c7667f/">build-18-0c7667f</a> <span class="badge">claude/adhoc-pages</span>
+          <p class="meta message">Publicar el IPA en gh-pages aunque la rama traiga un .gitignore</p>
+          <p class="meta">2026-10-13 06:28 UTC · 0c7667f</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FLeoneraKeyboard%2Fbuild-18-0c7667f%2Fmanifest.plist">Instalar</a>
+      </li>
+      <li>
+        <div class="info">
+          <a class="tag" href="build-17-a87b3fc/">build-17-a87b3fc</a> <span class="badge">claude/adhoc-pages</span>
+          <p class="meta message">Indicar cómo asignar el App Group cuando falta en el perfil</p>
+          <p class="meta">2026-10-13 06:20 UTC · a87b3fc</p>
+        </div>
+        <a class="get" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FLeoneraKeyboard%2Fbuild-17-a87b3fc%2Fmanifest.plist">Instalar</a>
+      </li>
+    </ul>
+  </section>
+  <footer>
+    <a href="https://github.com/leonardoramirezr/iOS-Leonera-Keyboard/tags">Tags</a> · <a href="https://github.com/leonardoramirezr/iOS-Leonera-Keyboard/releases">Releases</a>
+  </footer>
+</main>
+<script>
+  if (!/iPhone|iPad|iPod/.test(navigator.userAgent) &&
+      !(navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) {
+    document.getElementById("not-ios").style.display = "block";
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "tag": "build-17-a87b3fc",
+  "version": "0.4.0",
+  "build": "17",
+  "branch": "claude/adhoc-pages",
+  "commit": "a87b3fce61db4a392076c8c659f173f3dc7153dc",
+  "message": "Indicar cómo asignar el App Group cuando falta en el perfil",
+  "release": false,
+  "date": "2026-10-13T06:20:04+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/LeoneraKeyboard/build-17-a87b3fc/manifest.plist"
+}

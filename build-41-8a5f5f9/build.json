@@ -1,0 +1,11 @@
+{
+  "tag": "build-41-8a5f5f9",
+  "version": "0.11.0",
+  "build": "41",
+  "branch": "claude/cursor-min-acceleration",
+  "commit": "8a5f5f96bf37a6061067f2301ebcae72f1f89e38",
+  "message": "Cursor: limitar la aceleración mínima a la máxima",
+  "release": false,
+  "date": "2026-10-24T16:18:56+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-41-8a5f5f9/manifest.plist"
+}

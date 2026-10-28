@@ -1,0 +1,11 @@
+{
+  "tag": "0.7.0",
+  "version": "0.7.0",
+  "build": "32",
+  "branch": "main",
+  "commit": "28cf97c9a39539dbb32c2d4da0627f4e9e763520",
+  "message": "Mover el cursor manteniendo pulsada la barra espaciadora (#6)",
+  "release": true,
+  "date": "2026-10-22T01:21:37+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/0.7.0/manifest.plist"
+}

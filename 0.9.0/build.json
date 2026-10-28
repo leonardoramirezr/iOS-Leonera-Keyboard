@@ -1,0 +1,11 @@
+{
+  "tag": "0.9.0",
+  "version": "0.9.0",
+  "build": "36",
+  "branch": "main",
+  "commit": "90e118ebfb9db4b4fefe5e4168c422f32fee23cc",
+  "message": "Vibrar por cada carácter que mueve el cursor (#8)",
+  "release": true,
+  "date": "2026-10-22T14:41:13+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/0.9.0/manifest.plist"
+}

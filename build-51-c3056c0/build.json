@@ -1,0 +1,11 @@
+{
+  "tag": "build-51-c3056c0",
+  "version": "0.15.0",
+  "build": "51",
+  "branch": "claude/quitar-volver-y-reordenar-dictado",
+  "commit": "c3056c085d599d06b84063b08cec6d8eb622dcfe",
+  "message": "Quitar botón «Volver» y reordenar pantalla de dictado",
+  "release": false,
+  "date": "2026-10-28T03:32:56+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-51-c3056c0/manifest.plist"
+}

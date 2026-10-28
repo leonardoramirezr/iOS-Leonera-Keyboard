@@ -1,0 +1,11 @@
+{
+  "tag": "build-25-8d0727d",
+  "version": "0.6.0",
+  "build": "25",
+  "branch": "claude/ecstatic-faraday-c9ryqt",
+  "commit": "8d0727df2fae627a098f6739e697f52e7127746f",
+  "message": "Dictado: mostrar la pantalla de grabación al volver al teclado durante la espera",
+  "release": false,
+  "date": "2026-10-14T18:58:02+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-25-8d0727d/manifest.plist"
+}

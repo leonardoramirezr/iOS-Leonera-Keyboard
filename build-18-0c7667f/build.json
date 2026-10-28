@@ -1,0 +1,11 @@
+{
+  "tag": "build-18-0c7667f",
+  "version": "0.4.0",
+  "build": "18",
+  "branch": "claude/adhoc-pages",
+  "commit": "0c7667f622174c21f604694b05ec01d6e35b5e4c",
+  "message": "Publicar el IPA en gh-pages aunque la rama traiga un .gitignore",
+  "release": false,
+  "date": "2026-10-13T06:28:07+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/LeoneraKeyboard/build-18-0c7667f/manifest.plist"
+}
