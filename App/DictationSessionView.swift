@@ -9,9 +9,12 @@ struct DictationSessionView: View {
         NavigationStack {
             VStack(spacing: 24) {
                 Spacer()
-                Image(systemName: dictation.isRecording ? "waveform.circle.fill" : "mic.circle.fill")
-                    .font(.system(size: 96))
-                    .foregroundColor(dictation.isRecording ? Color.red : Color.accentColor)
+                if dictation.isSessionActive {
+                    Button("Desactivar micrófono", role: .destructive) {
+                        dictation.endSession()
+                        dismiss()
+                    }
+                }
                 Text(title)
                     .font(.title2.bold())
                     .multilineTextAlignment(.center)
@@ -25,24 +28,10 @@ struct DictationSessionView: View {
                         .multilineTextAlignment(.center)
                 }
                 Spacer()
-                VStack(spacing: 20) {
-                    if dictation.isRecording {
-                        Button("Cancelar grabación", role: .destructive) {
-                            dictation.cancelCapture()
-                        }
+                if dictation.isRecording {
+                    Button("Cancelar grabación", role: .destructive) {
+                        dictation.cancelCapture()
                     }
-                    if dictation.isSessionActive {
-                        Button("Desactivar micrófono", role: .destructive) {
-                            dictation.endSession()
-                            dismiss()
-                        }
-                    }
-                    // Al alcance del pulgar. iOS no deja a la app abrir la anterior: esto solo
-                    // cierra esta pantalla, y para volver a la app donde escribías hay que tocar «◀︎».
-                    Button("Volver a Leonera Keyboard") {
-                        dismiss()
-                    }
-                    .font(.headline)
                 }
             }
             .padding()
