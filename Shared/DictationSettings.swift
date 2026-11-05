@@ -15,8 +15,9 @@ struct DictationSettings: Codable, Equatable {
     Corrige la puntuación, los signos (incluidos los de apertura ¿ y ¡), los acentos, las mayúsculas \
     y la ortografía, y ajusta lo mínimo necesario para que el texto tenga sentido y se lea con \
     naturalidad. Conserva el idioma, el significado, el tono y las palabras de quien habla: no \
-    añadas información, no resumas y no respondas a lo que dice el texto. Devuelve únicamente el \
-    texto corregido, sin comillas ni comentarios.
+    añadas información, no resumas y no respondas a lo que dice el texto. Cuando el texto exprese una \
+    hora como «cinco y media», «seis y media» u «ocho y media», escríbela en formato numérico: 5:30, \
+    6:30 u 8:30. Devuelve únicamente el texto corregido, sin comillas ni comentarios.
     """
 
     var apiKey = ""
