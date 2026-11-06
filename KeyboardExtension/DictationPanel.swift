@@ -25,6 +25,11 @@ struct DictationPanel: View {
             }
             .padding(.horizontal, 12)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .overlay(alignment: .topTrailing) {
+                if dictation.isRecording {
+                    cancelButton
+                }
+            }
 
             KeyboardGrid(rows: [Self.bottomRow], rowHeight: state.rowHeight) { key in
                 KeyCell(key: key, state: state, perform: handle)
@@ -92,6 +97,23 @@ struct DictationPanel: View {
         .buttonStyle(.plain)
         .disabled(dictation.isBusy)
         .accessibilityLabel(dictation.isRecording ? "Terminar grabación" : "Grabar")
+    }
+
+    /// Descarta la grabación en curso sin transcribirla.
+    private var cancelButton: some View {
+        Button {
+            dictation.cancel()
+        } label: {
+            Image(systemName: "xmark")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(colorScheme == .dark ? Color(white: 0.75) : Color(white: 0.35))
+                .frame(width: 36, height: 36)
+                .contentShape(Circle())
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Cancelar grabación")
+        .padding(.top, 2)
+        .padding(.trailing, 4)
     }
 
     // MARK: - Fila inferior
