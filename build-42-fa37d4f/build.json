@@ -1,0 +1,11 @@
+{
+  "tag": "build-42-fa37d4f",
+  "version": "0.11.0",
+  "build": "42",
+  "branch": "claude/cursor-min-acceleration",
+  "commit": "fa37d4fa3c532504a9eea469fb2e6bf3e411bd3b",
+  "message": "Cursor: restaurar el espacio en la etiqueta de aceleración máxima",
+  "release": false,
+  "date": "2026-10-24T16:20:06+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-42-fa37d4f/manifest.plist"
+}

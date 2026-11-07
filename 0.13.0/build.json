@@ -1,0 +1,11 @@
+{
+  "tag": "0.13.0",
+  "version": "0.13.0",
+  "build": "47",
+  "branch": "main",
+  "commit": "c8b2802e8c82fe6c86c3c5866fdfbbdab0e9458f",
+  "message": "Área de toque configurable en cada tecla (#11)",
+  "release": true,
+  "date": "2026-10-27T04:53:28+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/0.13.0/manifest.plist"
+}

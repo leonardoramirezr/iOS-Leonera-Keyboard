@@ -1,0 +1,11 @@
+{
+  "tag": "0.15.0",
+  "version": "0.15.0",
+  "build": "52",
+  "branch": "main",
+  "commit": "cb564420a791527ab8d0d4bc25688ec74e8ea46a",
+  "message": "Quitar botón «Volver» y reordenar pantalla de dictado (#15)",
+  "release": true,
+  "date": "2026-11-03T12:40:11+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/0.15.0/manifest.plist"
+}

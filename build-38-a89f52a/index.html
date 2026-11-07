@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonera Keyboard build-38-a89f52a</title>
+<link rel="apple-touch-icon" href="icon-512.png">
+<style>
+  :root {
+    --bg: #f2f2f7; --card: #ffffff; --text: #1c1c1e; --muted: #6e6e73;
+    --accent: #0a84ff; --border: #d1d1d6; --badge: #e5e5ea; --stable: #34c759;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #000000; --card: #1c1c1e; --text: #f2f2f7; --muted: #98989f;
+            --border: #38383a; --badge: #2c2c2e; --stable: #30d158; }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 32px 16px; background: var(--bg); color: var(--text);
+    font: 17px/1.45 -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  }
+  main { max-width: 560px; margin: 0 auto; }
+  .card { background: var(--card); border-radius: 18px; padding: 20px; margin-bottom: 16px; }
+  .app { display: flex; align-items: center; gap: 16px; }
+  .app img { width: 72px; height: 72px; border-radius: 16px; border: 1px solid var(--border); }
+  h1 { font-size: 22px; margin: 0; }
+  h2 { font-size: 17px; margin: 0 0 8px; }
+  .meta { color: var(--muted); font-size: 15px; margin: 2px 0 0; overflow-wrap: anywhere; }
+  .install {
+    display: block; margin-top: 16px; padding: 14px; border-radius: 12px; text-align: center;
+    background: var(--accent); color: #fff; font-weight: 600; text-decoration: none;
+  }
+  .note { color: var(--muted); font-size: 15px; margin: 12px 0 0; }
+  .warning { display: none; color: #ff9f0a; font-size: 15px; margin: 12px 0 0; }
+  .builds { list-style: none; margin: 0; padding: 0; }
+  .builds li { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--border); }
+  .builds li:first-child { border-top: 0; padding-top: 0; }
+  .builds .info { flex: 1; min-width: 0; }
+  .builds .tag { font-weight: 600; text-decoration: none; color: var(--text); overflow-wrap: anywhere; }
+  .builds .message { font-size: 15px; margin: 2px 0 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .builds .get {
+    flex: none; padding: 6px 16px; border-radius: 999px; background: var(--badge);
+    color: var(--accent); font-weight: 600; font-size: 15px; text-decoration: none;
+  }
+  .badge {
+    display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 13px;
+    background: var(--badge); color: var(--muted); vertical-align: 1px; margin-left: 4px;
+  }
+  .badge.stable { background: var(--stable); color: #fff; }
+  ol { margin: 0; padding-left: 20px; }
+  li { margin: 4px 0; }
+  a { color: var(--accent); }
+  footer { color: var(--muted); font-size: 13px; text-align: center; }
+</style>
+</head>
+<body>
+<main>
+  <section class="card">
+    <div class="app">
+      <img src="icon-512.png" alt="">
+      <div>
+        <h1>Leonera Keyboard build-38-a89f52a <span class="badge">claude/trackpad-cursor-curve</span></h1>
+        <p class="meta">Versión 0.10.0 (38) · 2026-10-23 23:16 UTC</p>
+        <p class="meta">Gráfica de la curva del cursor y aceleración máxima como velocidad del dedo</p>
+      </div>
+    </div>
+    <a class="install" href="itms-services://?action=download-manifest&amp;url=https%3A%2F%2Fleonardoramirezr.github.io%2FiOS-Leonera-Keyboard%2Fbuild-38-a89f52a%2Fmanifest.plist">Instalar</a>
+    <p class="warning" id="not-ios">Abre esta página en Safari desde el iPhone o iPad para instalar la app.</p>
+    <p class="note">Solo se instala en los dispositivos registrados en el perfil Ad Hoc.</p>
+  </section>
+  <section class="card">
+    <h2>Instalación</h2>
+    <ol>
+      <li>Toca <strong>Instalar</strong> y confirma.</li>
+      <li>Espera a que el icono termine de descargarse en la pantalla de inicio.</li>
+      <li>Ajustes › General › Teclado › Teclados › Añadir teclado › <strong>Leonera</strong>.</li>
+      <li>Activa <strong>Permitir acceso completo</strong>.</li>
+    </ol>
+    <p class="note">Si aparece «No se puede instalar la app», el dispositivo no está en el perfil.</p>
+  </section>
+  <footer>
+    <a href="../">Todos los builds</a> ·
+    <a href="https://github.com/leonardoramirezr/iOS-Leonera-Keyboard/releases/tag/build-38-a89f52a">Release</a> ·
+    <a href="https://github.com/leonardoramirezr/iOS-Leonera-Keyboard/commit/a89f52a099db6a43b6747eb8660e4c228aaee814">a89f52a</a>
+  </footer>
+</main>
+<script>
+  if (!/iPhone|iPad|iPod/.test(navigator.userAgent) &&
+      !(navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) {
+    document.getElementById("not-ios").style.display = "block";
+  }
+</script>
+</body>
+</html>

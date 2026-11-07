@@ -1,0 +1,11 @@
+{
+  "tag": "build-48-bd3ec5d",
+  "version": "0.14.0",
+  "build": "48",
+  "branch": "feature/hit-area-real-size",
+  "commit": "bd3ec5d255314dfe9ca3194b43072491a123d9b9",
+  "message": "Vista previa del área de toque a tamaño real y espacio a toda la anchura",
+  "release": false,
+  "date": "2026-10-27T12:57:49+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-48-bd3ec5d/manifest.plist"
+}

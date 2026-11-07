@@ -1,0 +1,11 @@
+{
+  "tag": "build-56-435c695",
+  "version": "0.17.0",
+  "build": "56",
+  "branch": "claude/cancel-recording-button",
+  "commit": "435c695bcdd43cecf00224ee8b792a0986ff1458",
+  "message": "Volver a lanzar el build para publicar en GitHub Pages",
+  "release": false,
+  "date": "2026-11-07T03:43:15+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-56-435c695/manifest.plist"
+}

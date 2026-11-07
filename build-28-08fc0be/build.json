@@ -1,0 +1,11 @@
+{
+  "tag": "build-28-08fc0be",
+  "version": "0.7.0",
+  "build": "28",
+  "branch": "claude/space-hold-cursor-movement-haqpb7",
+  "commit": "08fc0be69bfaf0cf04f4a9d22010aa070164f32a",
+  "message": "Actualizar SettingsView.swift",
+  "release": false,
+  "date": "2026-10-14T20:31:26+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-28-08fc0be/manifest.plist"
+}

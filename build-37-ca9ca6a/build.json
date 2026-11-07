@@ -1,0 +1,11 @@
+{
+  "tag": "build-37-ca9ca6a",
+  "version": "0.10.0",
+  "build": "37",
+  "branch": "claude/trackpad-cursor-curve",
+  "commit": "ca9ca6a83183fabdc14c2ec0d801dbd63b40b41c",
+  "message": "Cursor del trackpad con velocidad máxima, aceleración y curva",
+  "release": false,
+  "date": "2026-10-23T22:57:20+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-37-ca9ca6a/manifest.plist"
+}

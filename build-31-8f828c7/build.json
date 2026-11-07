@@ -1,0 +1,11 @@
+{
+  "tag": "build-31-8f828c7",
+  "version": "0.7.0",
+  "build": "31",
+  "branch": "claude/auto-mic-shutdown-psm5o5",
+  "commit": "8f828c75759de2628537d98eef73d3b37c257538",
+  "message": "Dictado: cerrar el micrófono al salir del dictado salvo con el cierre automático activado",
+  "release": false,
+  "date": "2026-10-22T00:55:28+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-31-8f828c7/manifest.plist"
+}

@@ -1,0 +1,11 @@
+{
+  "tag": "build-53-b6579f6",
+  "version": "0.16.0",
+  "build": "53",
+  "branch": "claude/prompt-horas-y-media",
+  "commit": "b6579f6fa5947c9d66876af4df42c15052b93d13",
+  "message": "Convertir «X y media» en hora numérica en el prompt de mejora",
+  "release": false,
+  "date": "2026-11-05T03:35:51+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-53-b6579f6/manifest.plist"
+}

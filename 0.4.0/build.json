@@ -1,0 +1,11 @@
+{
+  "tag": "0.4.0",
+  "version": "0.4.0",
+  "build": "19",
+  "branch": "main",
+  "commit": "efedf823518a78e4e248a4b2227eafa75ab43b7c",
+  "message": "Merge pull request #3 from leonardoramirezr/claude/adhoc-pages",
+  "release": true,
+  "date": "2026-10-13T06:48:29+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/LeoneraKeyboard/0.4.0/manifest.plist"
+}

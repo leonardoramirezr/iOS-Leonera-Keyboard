@@ -1,0 +1,11 @@
+{
+  "tag": "build-55-bd54885",
+  "version": "0.17.0",
+  "build": "55",
+  "branch": "claude/cancel-recording-button",
+  "commit": "bd54885c988541f2ca587948b4c0b2e292162efe",
+  "message": "Añadir botón para cancelar la grabación en el teclado",
+  "release": false,
+  "date": "2026-11-06T15:38:14+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-55-bd54885/manifest.plist"
+}

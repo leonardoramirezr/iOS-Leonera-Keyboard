@@ -1,0 +1,11 @@
+{
+  "tag": "0.17.0",
+  "version": "0.17.0",
+  "build": "57",
+  "branch": "main",
+  "commit": "3a454f2a56de6ebc829644e160a0489e3798d81b",
+  "message": "Añadir botón para cancelar la grabación en el teclado (#17)",
+  "release": true,
+  "date": "2026-11-07T03:52:17+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/0.17.0/manifest.plist"
+}

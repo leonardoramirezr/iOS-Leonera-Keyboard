@@ -1,0 +1,11 @@
+{
+  "tag": "0.14.0",
+  "version": "0.14.0",
+  "build": "49",
+  "branch": "main",
+  "commit": "fcc67ac0fbdec6f8957e8df2dea90e0a48b3f088",
+  "message": "Vista previa del área de toque a tamaño real y espacio a toda la anchura (#13)",
+  "release": true,
+  "date": "2026-10-27T12:58:21+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/0.14.0/manifest.plist"
+}

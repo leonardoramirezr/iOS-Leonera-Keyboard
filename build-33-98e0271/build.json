@@ -1,0 +1,11 @@
+{
+  "tag": "build-33-98e0271",
+  "version": "0.8.0",
+  "build": "33",
+  "branch": "claude/auto-mic-shutdown-psm5o5",
+  "commit": "98e0271d31c6bfb28501a7f73e647a05d6bfc064",
+  "message": "Merge remote-tracking branch 'origin/main' into claude/auto-mic-shutdown-psm5o5",
+  "release": false,
+  "date": "2026-10-22T01:47:12+00:00",
+  "manifest_url": "https://leonardoramirezr.github.io/iOS-Leonera-Keyboard/build-33-98e0271/manifest.plist"
+}
